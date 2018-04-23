@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="https://use.typekit.net/dgo8atm.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+</head>
+<body>
+	<script>
+
+		// Set the date we're counting down to
+		var countDownDate = new Date("May 4, 2018 15:00:00").getTime();
+		var cnv;
+		var shapes = [];
+		var shape = [];
+		
+
+		function centerCanvas() {
+			var x = (windowWidth - width) / 2;
+			var y = (windowHeight - height) / 2;
+			cnv.position(0, 96);
+		}
+
+		function setup() {
+			cnv = createCanvas(windowWidth, windowHeight - 96);
+			centerCanvas();
+
+			angleMode(DEGREES);
+			for (var i=0; i<6; i++) {
+			    shapes.push(new Bounce());
+			    shape[i] = loadImage("images/blablab-0" + i + ".png");
+			 }
+		}
+
+		function draw() {
+			
+			background('rgba(255,255,255, 1.0)');/*rgba -> a = opacity; makes background transparent*/
+			
+			for (var i=0; i<shapes.length; i++) {
+				push();
+				shapes[i].display(i);
+			    shapes[i].move();
+			    pop();
+			}
+		
+			// push();
+			// 	fill(0, 228, 234);
+			// 	noStroke();
+			// 	shapes[1].display();
+			// pop();
+
+			// blendMode(MULTIPLY); //start multiply here because of strange behavior from first object...
+
+			// push();
+			// 	fill(255, 233, 0);
+			// 	noStroke();
+			// 	shapes[2].display();
+			// pop();
+
+			// push();
+			// 	strokeWeight(15);
+			// 	stroke(75, 32, 235);
+				
+			// 	shapes[3].display();
+			// pop();
+
+			// push();
+			// 	fill(255, 81, 62);
+			// 	noStroke();
+			// 	shapes[4].display();
+			// pop();
+
+			blendMode(MULTIPLY);
+	//TIMER SCRIPT STARTS HERE
+			// Get todays date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now an the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			// Display the result in the element with id="demo"
+			// document.getElementById("demo").innerHTML = days + "D " + hours + "H "
+			// + minutes + "M " + seconds + "S ";
+			var countdownTimer = days + "D " + hours + "H " + minutes + "M " + seconds + "S ";
+
+			push();
+				fill(32, 55, 61);
+				noStroke();
+			    textSize(144);
+			    textFont('franklin-gothic-urw');
+			    textStyle(BOLD);
+			    textAlign(CENTER);
+				text(countdownTimer, width/2, height/2 - 72);
+
+				textSize(72);
+				textStyle(NORMAL);
+				text("until BLABLAB", width/2, height/2 + 36);
+			pop();
+
+			blendMode(NORMAL);
+
+		}
+
+		// BOUNCING OBJECT STARTS HERE
+			function Bounce() {
+				this.x = random(150, width-150);
+				this.y = random(150, height-150);
+				this.diameter = random(200, 250);
+				this.rotateCounter = 1;
+				this.scaleRate = random(0.3, 1);
+
+				this.shapeX = 320;
+				this.shapeY = 180;
+				this.xspeed = random(-5, 5);
+				this.yspeed = random(-5, 5);
+
+				this.rngesus = random(0, 1);
+
+				this.move = function() {
+					this.x += this.xspeed;
+					this.y += this.yspeed;
+					if (this.x > width - this.diameter/2|| this.x < this.diameter/2) {
+						this.xspeed = -this.xspeed;
+					}
+					if (this.y > height - this.diameter/2 || this.y < this.diameter/2) {
+						this.yspeed = -this.yspeed;
+					}
+				};
+
+				this.display = function(i) {
+
+					// if (this.rngesus > 0.25) {
+					// 	ellipse(this.x, this.y, this.diameter, this.diameter);
+					// } else {
+					// 	translate(this.x, this.y);
+					// 	this.rotateCounter++;
+					// 	rotate(this.rotateCounter%360);
+					// 	rect(0, 0, this.diameter, this.diameter);
+					// }
+					imageMode(CENTER);
+					blendMode(MULTIPLY);
+					translate(this.x, this.y);
+					this.rotateCounter++;
+					rotate(this.rotateCounter%360);
+					scale(this.scaleRate);
+					image(shape[i], 0, 0, shape[i].width, shape[i].length)
+				}
+			}
+
+		function windowResized() {
+			// centerCanvas();
+			resizeCanvas(windowWidth, windowHeight - 96);
+		}
+	</script>
+
+	<div class="section group">
+		<div id="intro" class="col span_6_of_6">
+			<p style="text-align:left" style="display:inline-block">Upcoming Exhibition</p>
+			<p style="text-align:center" style="display:inline-block">On the Cut @ CMU</p> 
+			<p style="text-align:right" style="display:inline-block">May 4th, 3-6PM</p>
+		</div>
+<!-- 
+		<div id="landingCanvas"class="col span_6_of_6">
+			<p id="demo"></p>
+			<p>until &nbsp;<span>BLABLAB</span></p>
+		</div> -->
+
+		<div id="summary" class="col span_6_of_6">
+			<h1 style="color:#fff">What Is BlabLab?</h1>
+			<p style="color:#fff" class="bodycopy">BLABLAB is a pop-up exhibition that addresses the challenges we have during conversations with our friends, and discusses how to become better support systems for them.</p>
+		</div>
+		
+
+		
+		<div id="aboutheader" class="col span_6_of_6">
+			<h1 style="color:#FF513E">About</h1>
+		</div>
+
+		<div id="about" class="col span_6_of_6">
+
+
+			<p style="color:#000" class="bodycopy">When’s the last time you thought about how you talked to other people? Do you ever think about how other people talk to you?</p>
+
+			<p style="color:#000" class="bodycopy">Inspired by our own lack of awareness about how we converse with others, we’ve designed an exciting set of activities that reveals our different communication styles, facilitates open dialogue about misunderstandings, and provides tips on how to become better listeners.</p>
+
+			<p style="color:#000" class="bodycopy">Bring a friend (or just yourself) and join us at the Cut on Friday, May 4 to sip some lemonade and learn more about how we converse with one another!</p>
+
+			<p style="color:#000" class="bodycopy"><span>Note: Refreshments and good conversations will be provided!</span></p>
+		</div>
+
+		<div id="comeback" class="col span_6_of_6">
+			<p style="color:#fff" class="bodycopy">Be sure to come back to this website after the exhibition date to see how BLABLAB lives on!</p>
+		</div>   
+
+	</div>
+
+
+</body>
+</html>
