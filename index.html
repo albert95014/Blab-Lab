@@ -119,7 +119,7 @@
 			pop();
 
 			fill(32, 55, 61);
-			triangle(width/2, height-triangleHeight/2, width/2-triangleWidth, height-triangleHeight, width/2+triangleWidth, height-triangleHeight);
+			triangle(width/2, height-triangleHeight/2-20, width/2-triangleWidth, height-triangleHeight-20, width/2+triangleWidth, height-triangleHeight-20);
 
 			blendMode(NORMAL);
 
@@ -142,12 +142,12 @@
 		    	lineHeight = 24;
 		    	randomScaleRate = 0.1;
 		    	triangleWidth = 10;
-		    	triangleHeight = 20;
+		    	triangleHeight = 30;
 		    } else {
 		    	lineHeight = 72;
 		    	randomScaleRate = 0.3;
 		    	triangleWidth = 20;
-		    	triangleHeight = 40;
+		    	triangleHeight = 50;
 		    }
 		}
 
