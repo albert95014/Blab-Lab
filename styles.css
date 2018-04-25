@@ -1,6 +1,7 @@
 /*  SECTIONS  */
 .section {
 	clear: both;
+	padding: 0 108px;
 	margin: 0px;
 }
 
@@ -8,7 +9,7 @@
 .col {
 	display: block;
 	float:left;
-	/*margin: 0 0 0 0*/ /*originally 1% 0 1% 1.8%*/
+	margin: 0 0 1% 1.8%; /*originally 1% 0 1% 1.8%*/
 }
 .col:first-child { margin-left: 0; }
 
@@ -20,7 +21,7 @@
 
 /*  GRID OF SIX  */
 .span_6_of_6 {
-	width: 100%;
+	width: 20%;
 }
 
 .span_5_of_6 {
@@ -45,7 +46,7 @@
 
 /*  GO FULL WIDTH BELOW 480 PIXELS */
 @media only screen and (max-width: 480px) {
-	.col {  margin: 0% 0 0% 0%; }
+	.col {  margin: 1% 0 1% 0%; }
 	.span_1_of_6, .span_2_of_6, .span_3_of_6, .span_4_of_6, .span_5_of_6, .span_6_of_6 { width: 100%; }
 }
 
@@ -74,12 +75,12 @@ canvas {
 }
 
 #intro {
-	width: calc(100vw);
+	width: calc(100vw - 216px);
 	height: 96px;
 	position: fixed;
 		top: 0px;
 		left: 0px;
-	padding: 0 5%;
+	padding: 0 108px;
 	background: #FFE900;
 	z-index: 99999;
 
@@ -92,7 +93,7 @@ canvas {
 	font-size: 1.4rem;
 	display: inline-block;
 	padding-top: 36px;
-	width: 30%;
+	width: 33.3%;
 	float: left;
 	text-transform: uppercase;
 }
@@ -126,9 +127,10 @@ canvas {
 #summary {
 	width: calc(100vw);
 	margin-top: 100vh;
+	margin-left: -108px;
 	height: auto;
 	box-sizing: border-box;
-	padding: 7% 10%;
+	padding: 108px 216px;
 	background: #4B21EB;
 	z-index: 99999;
 }
@@ -144,24 +146,22 @@ h1 {
 #aboutheader {
 	width: calc(100vw);
 	box-sizing: border-box;
-	padding: 5% 10% 0;
+	padding: 108px 216px 0;
+	margin-left: -108px;
 }
 
 .bodycopy {
 	font-size: 2.8rem;
 	font-weight: 300;
-	line-height: 3.6rem;
+	line-height: 3.4rem;
 	margin-bottom: 36px;
-}
-
-.bodycopy:last-child {
-	margin-bottom: 0;
 }
 
 #about {
 	width: calc(100vw);
 	box-sizing: border-box;
-	padding: 0 10% 5%;
+	padding: 0 216px 108px;
+	margin-left: -108px;
 
 	height: auto;
 
@@ -175,6 +175,10 @@ h1 {
 	vertical-align: top;
 }
 
+#about .bodycopy {
+	
+}
+
 span {
 	font-size: 2.0rem;
 	line-height: 1.0rem;
@@ -183,76 +187,13 @@ span {
 
 #comeback {
 	width: calc(100vw);
+	margin-left: -108px;
 	margin-bottom: 0;
 	box-sizing: border-box;
 	height: auto;
-	padding: 5% 10%;
+	padding: 108px 216px;
 	background: #FF513E;
 	z-index: 99999;
-}
-
-
-/*MEDIA QUERIES*/
-@media only screen and (max-width: 1280px) {
-	#intro p {
-		display: block;
-		width: 30%;
-		text-align: center;
-		font-size: 1.4rem;
-	}
-
-    .bodycopy  {
-    	font-size: 1.8rem;
-    	line-height: 2.7rem;
-    }
-
-   
-
-    #about {
-    	-webkit-column-count: 1;
-	       -moz-column-count: 1;
-			    column-count: 1;
-    }
-
-    span {
-    	font-size: 1.5rem;
-    	line-height: 1.8rem;
-    }
-}
-
-@media only screen and (max-width: 720px) {
-	#intro p {
-		width: 90%;
-		font-size: 0.8rem;
-		padding-top: 15px;
-	}
-
-	.bodycopy {
-		font-size: 1.4rem;
-		line-height: 2.2rem;
-	}
-
-	h1 { 
-		font-size: 1.0rem;
-	}
-
-	span {
-		font-size:1.2rem;
-		line-height: 1.4rem;
-	}
-
-	 #summary, #comeback {
-    	padding-top: 12%;
-    	padding-bottom: 12%;
-    }
-
-    #aboutheader { 
-    	padding-top: 12%;
-   	}
-
-   	#about {
-   		padding-bottom: 12%;
-   	}
 }
 
 
