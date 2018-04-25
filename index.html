@@ -26,6 +26,8 @@
 		var shape = [];
 		var lineHeight;
 		var randomScaleRate;
+		var triangleWidth;
+		var triangleHeight;
 
 		function centerCanvas() {
 			var x = (windowWidth - width) / 2;
@@ -117,7 +119,7 @@
 			pop();
 
 			fill(32, 55, 61);
-			triangle(width/2, height-30, width/2-30, height-60, width/2+30, height-60);
+			triangle(width/2, height-triangleHeight/2, width/2-triangleWidth, height-triangleHeight, width/2+triangleWidth, height-triangleHeight);
 
 			blendMode(NORMAL);
 
@@ -126,7 +128,7 @@
 		// When the user clicks the mouse
 		function mousePressed() {
 			// Check if mouse is inside the triangle
-			var d = dist(mouseX, mouseY, width/2, height-45);
+			var d = dist(mouseX, mouseY, width/2, height-40);
 			if (d < 30) {
 		         $('html, body').animate({
 		           'scrollTop':   $('#summary').offset().top - 96
@@ -139,9 +141,13 @@
 		    if (x.matches) { // If media query matches
 		    	lineHeight = 24;
 		    	randomScaleRate = 0.1;
+		    	triangleWidth = 10;
+		    	triangleHeight = 20;
 		    } else {
 		    	lineHeight = 72;
 		    	randomScaleRate = 0.3;
+		    	triangleWidth = 20;
+		    	triangleHeight = 40;
 		    }
 		}
 
