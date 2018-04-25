@@ -13,6 +13,8 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<script>
@@ -108,14 +110,30 @@
 			    textAlign(CENTER);
 				text(countdownTimer, width/2, height/2 - lineHeight);
 
+
 				textSize(width/25);
-				textStyle(NORMAL);
+				textStyle(BOLD);
 				text("until BLABLAB", width/2, height/2 + lineHeight/2);
 			pop();
+
+			fill(32, 55, 61);
+			triangle(width/2, height-30, width/2-30, height-60, width/2+30, height-60);
 
 			blendMode(NORMAL);
 
 		}
+
+		// When the user clicks the mouse
+		function mousePressed() {
+			// Check if mouse is inside the triangle
+			var d = dist(mouseX, mouseY, width/2, height-45);
+			if (d < 30) {
+		         $('html, body').animate({
+		           'scrollTop':   $('#summary').offset().top - 96
+		         }, 1000);
+			}
+		}
+
 
 		function myFunction(x) {
 		    if (x.matches) { // If media query matches
@@ -185,15 +203,10 @@
 
 	<div class="section group">
 		<div id="intro" class="col span_6_of_6">
-			<p>Upcoming Exhibition</p>
+			<p>BlabLab</p>
 			<p>On the Cut @ CMU</p> 
 			<p>May 4th, 4-6PM</p>
 		</div>
-<!-- 
-		<div id="landingCanvas"class="col span_6_of_6">
-			<p id="demo"></p>
-			<p>until &nbsp;<span>BLABLAB</span></p>
-		</div> -->
 
 		<div id="summary" class="col span_6_of_6">
 			<h1 style="color:#fff">What Is BlabLab?</h1>
@@ -213,7 +226,7 @@
 
 			<p style="color:#000" class="bodycopy">Inspired by our own lack of awareness about how we converse with others, we’ve designed an exciting set of activities that reveals our different communication styles, facilitates open dialogue about misunderstandings, and provides tips on how to become better listeners.</p>
 
-			<p style="color:#000" class="bodycopy">Bring a friend (or just yourself) and join us at the Cut on Friday, May 4 to sip some lemonade and learn more about how we converse with one another!</p>
+			<p style="color:#000" class="bodycopy">Bring a friend (or just yourself) and join us at the Cut at 4-6PM on Friday, May 4 to sip some lemonade and learn more about how we converse with one another!</p>
 
 			<p style="color:#000" class="bodycopy"><span>Note: Refreshments and good conversations will be provided!</span></p>
 		</div>
