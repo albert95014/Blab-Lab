@@ -22,7 +22,8 @@
 		var cnv;
 		var shapes = [];
 		var shape = [];
-		
+		var lineHeight;
+		var randomScaleRate;
 
 		function centerCanvas() {
 			var x = (windowWidth - width) / 2;
@@ -101,20 +102,36 @@
 			push();
 				fill(32, 55, 61);
 				noStroke();
-			    textSize(width/8);
+			    textSize(width/10);
 			    textFont('franklin-gothic-urw');
 			    textStyle(BOLD);
 			    textAlign(CENTER);
-				text(countdownTimer, width/2, height/2 - 72);
+				text(countdownTimer, width/2, height/2 - lineHeight);
 
 				textSize(width/25);
 				textStyle(NORMAL);
-				text("until BLABLAB", width/2, height/2 + 36);
+				text("until BLABLAB", width/2, height/2 + lineHeight/2);
 			pop();
 
 			blendMode(NORMAL);
 
 		}
+
+		function myFunction(x) {
+		    if (x.matches) { // If media query matches
+		    	lineHeight = 24;
+		    	randomScaleRate = 0.1;
+		        document.body.style.backgroundColor = "yellow";
+		    } else {
+		    	lineHeight = 72;
+		    	randomScaleRate = 0.3;
+		        document.body.style.backgroundColor = "pink";
+		    }
+		}
+
+		var x = window.matchMedia("(max-width: 720px)")
+		myFunction(x) // Call listener function at run time
+		x.addListener(myFunction) // Attach listener function on state changes
 
 		// BOUNCING OBJECT STARTS HERE
 			function Bounce() {
@@ -122,7 +139,7 @@
 				this.y = random(150, height-150);
 				this.diameter = random(200, 250);
 				this.rotateCounter = 1;
-				this.scaleRate = random(0.3, 1);
+				this.scaleRate = random(randomScaleRate, randomScaleRate*3);
 
 				this.shapeX = 320;
 				this.shapeY = 180;
