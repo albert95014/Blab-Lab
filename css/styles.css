@@ -185,7 +185,7 @@ span {
 	font-style: italic;
 }
 
-#comeback {
+#comeback, #contact {
 	width: calc(100vw);
 	margin-bottom: 0;
 	box-sizing: border-box;
@@ -193,6 +193,10 @@ span {
 	padding: 5% 10%;
 	background: #FF513E;
 	z-index: 99999;
+}
+
+#contact {
+	background: #fff;
 }
 
 
@@ -245,7 +249,7 @@ span {
 		line-height: 1.4rem;
 	}
 
-	 #summary, #comeback {
+	 #summary, #comeback, #contact {
     	padding-top: 12%;
     	padding-bottom: 12%;
     }
