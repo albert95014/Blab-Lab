@@ -75,30 +75,31 @@ canvas {
 
 #intro {
 	width: calc(100vw);
-	height: 96px;
+	/*height: 96px;*/
 	position: fixed;
-		top: 0px;
-		left: 0px;
+    top: 0px;
+    left: 0px;
 	padding: 0 5%;
-	background: #FFE900;
 	z-index: 99999;
 
 }
 
-#intro p {
+#intro a {
+    text-decoration: none;
 	text-align: center;
-	
-	font-weight: 600;
-	font-size: 1.4rem;
+	font-weight: 300;
+	font-size: 1.5rem;
 	display: inline-block;
 	padding-top: 36px;
-	width: 30%;
+    padding-bottom: 36px;
+	width: 25%;
 	float: left;
+    color: #000;
 	text-transform: uppercase;
 }
 
 #landingCanvas {
-	margin: 96px -1.8% 0 0; /*96px to go past header bar; -1.8% to offset .col's right margin*/
+	margin: -1.8% 0 0; /*96px to go past header bar; -1.8% to offset .col's right margin*/
 	height: calc(100vh - 96px);
 }
 
@@ -128,7 +129,7 @@ canvas {
 	margin-top: 100vh;
 	height: auto;
 	box-sizing: border-box;
-	padding: 7% 10%;
+	padding: 5% 10% 10% 10%;
 	background: #4B21EB;
 	z-index: 99999;
 }
@@ -149,12 +150,13 @@ b {
 	width: calc(100vw);
 	box-sizing: border-box;
 	padding: 5% 10% 0;
+    background-color: #ffe2ff;
 }
 
 .bodycopy {
-	font-size: 2.6rem;
-	font-weight: 300;
-	line-height: 3.4rem;
+	font-size: 3.6rem;
+	font-weight: 700;
+	line-height: 4.4rem;
 	margin-bottom: 36px;
 }
 
@@ -162,10 +164,16 @@ b {
 	margin-bottom: 0;
 }
 
+.bodycopy_sm {
+    font-size: 1.8em;
+    line-height: 1.7em;
+    font-weight: 300;
+}
+
 #about {
 	width: calc(100vw);
 	box-sizing: border-box;
-	padding: 0 10% 5%;
+	padding: 0 10% 10%;
 
 	height: auto;
 
@@ -177,6 +185,7 @@ b {
 	   -moz-column-gap: 108px;
 			column-gap: 108px;
 	vertical-align: top;
+    background-color: #ffe2ff;
 }
 
 span {
@@ -190,36 +199,54 @@ span {
 	margin-bottom: 0;
 	box-sizing: border-box;
 	height: auto;
-	padding: 5% 10%;
+	padding: 10% 10%;
 	background: #FF513E;
 	z-index: 99999;
 }
 
 #contact {
-	background: #fff;
+	background: #FF513E;;
+}
+
+.logo {
+    position: absolute;
+    z-index: 10;
+    width: 70%;
+    top: calc(50% - 85px);
+    left: 15%;
+    right: 15%;
+}
+
+#blablab2018 {
+    padding: 5% 10%;
 }
 
 
 /*MEDIA QUERIES*/
 @media only screen and (max-width: 1280px) {
-	#intro p {
+	#intro a {
 		display: block;
-		width: 30%;
+		width: 25%;
 		text-align: center;
 		font-size: 1.4rem;
 	}
 
     .bodycopy  {
+    	font-size: 3.6rem;
+    	line-height: 4.4rem;
+    }
+    
+    .bodycopy_sm  {
     	font-size: 1.8rem;
     	line-height: 2.7rem;
     }
 
    
-
     #about {
     	-webkit-column-count: 1;
 	       -moz-column-count: 1;
 			    column-count: 1;
+        background-color: #ffe2ff;
     }
 
     span {
@@ -229,16 +256,25 @@ span {
 }
 
 @media only screen and (max-width: 720px) {
-	#intro p {
-		width: 90%;
+    #intro {
+        padding: 1% 5%;
+    }
+    
+    #intro a {
+		width: 100%;
 		font-size: 0.8rem;
-		padding-top: 15px;
+		padding: 10px 0;
 	}
 
 	.bodycopy {
 		font-size: 1.4rem;
 		line-height: 2.2rem;
 	}
+    
+    .bodycopy_sm {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+    }
 
 	h1 { 
 		font-size: 1.0rem;
@@ -249,7 +285,11 @@ span {
 		line-height: 1.4rem;
 	}
 
-	 #summary, #comeback, #contact {
+    .logo {
+    top: calc(50% - 30px);
+}
+    
+    #summary, #comeback, #contact {
     	padding-top: 12%;
     	padding-bottom: 12%;
     }
@@ -260,7 +300,86 @@ span {
 
    	#about {
    		padding-bottom: 12%;
+        background-color: #ffe2ff;
    	}
 }
 
+* {
+  box-sizing: border-box;
+}
 
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.slideContainer {
+    position: relative;
+}
